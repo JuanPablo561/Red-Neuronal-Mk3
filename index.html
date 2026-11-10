@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mk3 · Prendas en contexto</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="/static/estilos.css">
+  <script src="/static/app.js" defer></script>
+</head>
+<body>
+<main>
+  <header><a class="marca" href="/">RED NEURONAL <span>MK3</span></a><span class="etiqueta">FORMA → DETALLE → CONTEXTO</span></header>
+  <div class="introduccion"><p class="sobre">VISIÓN POR COMPUTADORA / 03</p><h1>Una escena.<br>Varias prendas.</h1><p>Localiza prendas y accesorios dentro de una foto.<br>Explora qué encuentra el modelo y dónde lo encuentra.</p></div>
+  <div class="espacio">
+    <section class="visor" aria-labelledby="tituloFoto">
+      <div class="cabecera"><h2 id="tituloFoto">01 / Tu imagen</h2><span id="dimensiones">JPEG · PNG · WEBP</span></div>
+      <div id="zona">
+        <div id="vacio"><span class="mira" aria-hidden="true">⌖</span><h3>La escena empieza aquí</h3><p>Arrastra una foto o selecciona un archivo.<br>Prueba con una persona o varias prendas sobre una mesa.</p></div>
+        <canvas id="lienzo" hidden aria-label="Imagen con cajas numeradas de las prendas detectadas"></canvas>
+      </div>
+      <div class="acciones">
+        <label class="boton principal" for="archivo">Seleccionar foto</label><input id="archivo" type="file" accept="image/jpeg,image/png,image/webp">
+        <label class="boton" for="camara">Tomar foto</label><input id="camara" type="file" accept="image/*" capture="environment">
+      </div>
+      <p class="ayuda">Hasta 15 MB y 20 megapíxeles. En móvil, “Tomar foto” abre la cámara compatible; en escritorio puede abrir el selector de archivos.</p>
+    </section>
+    <aside aria-labelledby="tituloResultados">
+      <div class="cabecera"><h2 id="tituloResultados">02 / Lo que encuentra</h2><span id="total">—</span></div>
+      <p id="estado" role="status" aria-live="polite">Selecciona una foto para comenzar.</p>
+      <p id="error" role="alert" hidden></p>
+      <ol id="resultados" aria-label="Prendas detectadas"></ol>
+      <div class="ajuste"><label for="umbral">Puntuación mínima <output id="valor" for="umbral">0.15</output></label><input id="umbral" type="range" min="0.01" max="0.90" step="0.01" value="0.15"><p>Un valor bajo muestra más propuestas y puede incluir errores. Cambiarlo requiere volver a analizar.</p></div>
+      <button id="analizar" class="boton principal" disabled>Analizar imagen</button>
+      <button id="descargar" class="boton" disabled>Exportar resultados</button>
+      <p class="nota">Las puntuaciones del detector no son porcentajes de acierto. Selecciona un resultado para resaltar su ubicación.</p>
+    </aside>
+  </div>
+  <footer><p><strong>Contexto, paso a paso.</strong> Detección de varias prendas con OWL-ViT. Puede omitir objetos, confundir categorías o detectar prendas donde no las hay.</p><p>Las fotos se procesan en el equipo que ejecuta el servidor y no se guardan. El modelo se descarga en la primera ejecución.</p></footer>
+</main>
+</body>
+</html>

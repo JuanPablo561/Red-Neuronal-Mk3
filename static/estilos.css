@@ -1,0 +1,53 @@
+:root { color-scheme: light; --fondo:#f6f5f1; --superficie:#fff; --texto:#24251f; --suave:#61645a; --borde:#dedfd5; --acento:#a54427; --zona:#eeeee6; }
+* { box-sizing:border-box; }
+body { margin:0; background:var(--fondo); color:var(--texto); font:16px/1.5 system-ui,sans-serif; }
+main { max-width:1200px; margin:auto; padding:0 32px; }
+header { display:flex; justify-content:space-between; align-items:center; gap:16px; padding:24px 0; border-bottom:1px solid var(--borde); }
+.marca { color:var(--texto); text-decoration:none; font-size:14px; font-weight:750; letter-spacing:.08em; }
+.marca span { background:var(--texto); color:var(--fondo); padding:4px 8px; margin-left:8px; }
+.etiqueta,.sobre { font-size:11px; font-weight:650; letter-spacing:.12em; }
+.etiqueta { color:var(--suave); }
+.introduccion { padding:40px 0 32px; }
+.sobre { color:var(--acento); margin:0 0 16px; }
+h1 { font-size:clamp(36px,5vw,60px); line-height:1.08; letter-spacing:-.045em; margin:0 0 20px; font-weight:650; }
+.introduccion>p:last-child { color:var(--suave); margin:0; }
+.espacio { display:grid; grid-template-columns:minmax(0,1.7fr) minmax(0,1fr); border:1px solid var(--borde); background:var(--superficie); }
+.visor { min-width:0; padding:24px; border-right:1px solid var(--borde); }
+aside { padding:24px; min-width:0; }
+.cabecera { display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px; margin-bottom:20px; }
+h2 { font-size:13px; margin:0; font-weight:650; }
+.cabecera>span { font:11px ui-monospace,monospace; color:var(--suave); }
+#zona { min-height:350px; display:grid; place-items:center; background:var(--zona); border:1px dashed #b5b7ab; padding:16px; }
+#zona.arrastrando { outline:3px solid var(--acento); outline-offset:-3px; }
+#vacio { text-align:center; color:var(--suave); }
+.mira { font-size:52px; color:var(--acento); }
+h3 { font-size:18px; color:var(--texto); margin:8px 0; }
+#vacio p { font-size:13px; max-width:360px; }
+canvas { max-width:100%; height:auto; display:block; }
+[hidden] { display:none!important; }
+.acciones { display:flex; flex-wrap:wrap; gap:8px; margin-top:20px; }
+.boton { display:inline-block; font:600 13px/1.5 system-ui,sans-serif; padding:10px 16px; background:var(--superficie); color:var(--texto); border:1px solid var(--borde); border-radius:4px; cursor:pointer; }
+.principal { background:var(--acento); color:white; border-color:var(--acento); }
+.boton:hover:not(:disabled) { filter:brightness(.92); }
+.boton:disabled { opacity:.45; cursor:default; }
+:focus-visible { outline:3px solid #26657e; outline-offset:4px; }
+/* El input sigue en el orden de teclado; su etiqueta muestra el foco. */
+input[type=file] { position:absolute; width:1px; height:1px; opacity:0; }
+label:has(+input[type=file]:focus-visible) { outline:3px solid #26657e; outline-offset:4px; }
+.ayuda,.nota,.ajuste p { color:var(--suave); font-size:12px; }
+.ayuda { margin-bottom:0; }
+#estado { color:var(--suave); font-size:14px; }
+#error { color:#9a241d; font-size:14px; }
+#resultados { list-style:none; margin:0 0 24px; padding:0; max-height:350px; overflow:auto; }
+#resultados li { border-bottom:1px solid var(--borde); }
+.resultado { width:100%; display:flex; align-items:center; gap:12px; text-align:left; padding:12px 4px; border:0; background:transparent; color:var(--texto); font:inherit; cursor:pointer; }
+.resultado[aria-pressed=true] { background:var(--zona); }
+.numero { display:grid; place-items:center; width:28px; height:28px; border:1px solid var(--acento); color:var(--acento); font:12px ui-monospace,monospace; flex:none; }
+.resultado small { margin-left:auto; color:var(--suave); font:12px ui-monospace,monospace; }
+.ajuste { border-top:1px solid var(--borde); padding-top:20px; margin:24px 0 16px; }
+.ajuste label { display:flex; justify-content:space-between; font-size:13px; font-weight:600; }
+output { font-family:ui-monospace,monospace; color:var(--acento); }
+input[type=range] { width:100%; accent-color:var(--acento); margin:16px 0 0; }
+footer { display:grid; grid-template-columns:1fr 1fr; gap:32px; margin:24px 0 40px; color:var(--suave); font-size:12px; }
+footer strong { color:var(--texto); }
+@media(max-width:760px) { main{padding:0 16px} .etiqueta{display:none} .introduccion{padding-top:32px} .espacio{grid-template-columns:1fr} .visor{border-right:0;border-bottom:1px solid var(--borde)} .visor,aside{padding:16px} #zona{min-height:280px} footer{grid-template-columns:1fr;gap:0} }
